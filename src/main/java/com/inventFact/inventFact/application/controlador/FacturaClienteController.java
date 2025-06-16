@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/facturaCliente")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class FacturaClienteController {
 
     private final FacturaClienteAppService facturaService;
@@ -24,5 +25,25 @@ public class FacturaClienteController {
     public ResponseEntity<List<FacturaCliente>> obtenerFacturas() {
         return ResponseEntity.ok(facturaService.findAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FacturaCliente> obtenerFacturaPorId(@PathVariable Long id) {
+        FacturaCliente factura = facturaService.findById(id);
+        if (factura == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(factura);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarFactura(@PathVariable Long id) {
+        FacturaCliente factura = facturaService.findById(id);
+        if (factura == null) {
+            return ResponseEntity.notFound().build();
+        }
+        facturaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
+
 

@@ -46,6 +46,14 @@ public class FacturaClienteAppService {
     public List<FacturaCliente> findAll() {
         return facturaClienteService.findAll();
     }
+    public FacturaCliente findById(Long id) {
+        return facturaClienteService.findById(id);
+    }
+
+    public void delete(Long id) {
+        facturaClienteService.delete(id);
+    }
+
 }
 
 
