@@ -10,14 +10,31 @@ public class ProveedorMongo {
     private String id;
     private String nombreProveedor;
     private String rucProveedor;
-    // Puedes agregar listas de productos y facturas como referencias si lo deseas
-    // private List<String> productosIds;
-    // private List<String> facturasIds;
+    private List<String> productosIds; // Referencias a productos
+    private List<String> facturasIds; // Referencias a facturas
+
+    // Constructor por defecto
+    public ProveedorMongo() {}
+
+    // Constructor con parámetros
+    public ProveedorMongo(String nombreProveedor, String rucProveedor) {
+        this.nombreProveedor = nombreProveedor;
+        this.rucProveedor = rucProveedor;
+    }
+
     // Getters y setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
+
     public String getNombreProveedor() { return nombreProveedor; }
     public void setNombreProveedor(String nombreProveedor) { this.nombreProveedor = nombreProveedor; }
+
     public String getRucProveedor() { return rucProveedor; }
     public void setRucProveedor(String rucProveedor) { this.rucProveedor = rucProveedor; }
+
+    public List<String> getProductosIds() { return productosIds; }
+    public void setProductosIds(List<String> productosIds) { this.productosIds = productosIds; }
+
+    public List<String> getFacturasIds() { return facturasIds; }
+    public void setFacturasIds(List<String> facturasIds) { this.facturasIds = facturasIds; }
 }
