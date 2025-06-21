@@ -4,6 +4,7 @@ import com.inventFact.inventFact.domain.mongo.entity.ProveedorMongo;
 import com.inventFact.inventFact.infrastructure.mongo.repository.ProveedorMongoRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProveedorMongoService {
@@ -17,9 +18,15 @@ public class ProveedorMongoService {
         return repository.findAll();
     }
 
+    public Optional<ProveedorMongo> findById(String id) {
+        return repository.findById(id);
+    }
+
     public ProveedorMongo save(ProveedorMongo proveedor) {
         return repository.save(proveedor);
     }
 
-    // Otros métodos CRUD si los necesitas
+    public void deleteById(String id) {
+        repository.deleteById(id);
+    }
 }
